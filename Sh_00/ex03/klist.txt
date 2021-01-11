@@ -1,5 +1,0 @@
-Credentials cache: API:5F52D51D-4044-41FE-8DF6-303F74BB9B02
-        Principal: anmartin@42LISBOA.COM
-
-  Issued                Expires               Principal
-Jan  5 11:15:53 2021  Jan  5 21:15:53 2021  krbtgt/42LISBOA.COM@42LISBOA.COM
