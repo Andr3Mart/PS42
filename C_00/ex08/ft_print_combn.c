@@ -1,66 +1,63 @@
-# include  <unistd.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: anmartin <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/01/12 08:47:26 by anmartin          #+#    #+#             */
+/*   Updated: 2021/01/12 08:50:41 by anmartin         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <unistd.h>
 
 void	ft_putchar(char c)
 {
 	write(1, &c, 1);
 }
 
-void	ft_check_print(int x[], int n)
+void	printer(int n, int digits[])
 {
-	int i;
-	int yes;
+	int		count;
+	char	print;
 
-	i = 0;
-	yes = 1;
-	while (i < n - 1)
+	count = 0;
+	while (count < n)
 	{
-		if (!(x[i] < x[i + 1]))
-			yes = 0;
-		i++;
+		print = digits[count] + '0';
+		write(1, &print, 1);
+		count++;
 	}
-	if (yes == 1)
+	if (digits[0] != 10 - n)
 	{
-		i = 0;
-		while (i < n)
-		{
-			ft_putchar(x[i]);
-			i++;
-		}
-		if (x[0] != '9' - n + 1)
-		{
-			ft_putchar(',');
-			ft_putchar(' ');
-		}
+		write(1, ", ", 2);
 	}
 }
 
-void	create_while(int x[], int k, int n)
+void	recursive(int n, int digits[], int actual_digit, int count)
 {
-	if (k == n - 1)
+	int limit;
+
+	if (actual_digit == n)
 	{
-		x[k] = '0';
-		while (x[k] <= '9')
-		{
-			if (n == 9 && x[0] > '1')
-				break ;
-			ft_check_print(x, n);
-			x[k]++;
-		}
+		printer(n, digits);
 	}
 	else
 	{
-		x[k] = '0';
-		while (x[k] <= '9')
+		limit = 10 - (n - actual_digit);
+		while (count + 1 <= limit)
 		{
-			create_while(x, k + 1, n);
-			x[k]++;
+			digits[actual_digit] = count + 1;
+			recursive(n, digits, actual_digit + 1, count + 1);
+			count++;
 		}
 	}
 }
 
 void	ft_print_combn(int n)
 {
-	int x[n];
+	int digits[10];
 
-	create_while(x, 0, n);
+	recursive(n, digits, 0, -1);
 }

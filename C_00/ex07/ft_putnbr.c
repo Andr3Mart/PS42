@@ -1,3 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: anmartin <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/01/11 13:39:58 by anmartin          #+#    #+#             */
+/*   Updated: 2021/01/12 07:41:04 by anmartin         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <unistd.h>
+
 void	ft_putchar(char c)
 {
 	write(1, &c, 1);
@@ -6,7 +20,7 @@ void	ft_putchar(char c)
 void	ft_putnbr(int nb)
 {
 	int	temp;
-	int	size;
+	int size;
 
 	size = 1;
 	if (nb < 0)
@@ -15,7 +29,7 @@ void	ft_putnbr(int nb)
 		nb = -nb;
 	}
 	if (nb == -2147483648)
-	{	
+	{
 		ft_putchar('2');
 		nb = 147483648;
 	}
