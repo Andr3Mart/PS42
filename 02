@@ -1,0 +1,46 @@
+ft_strcmp
+/*Reproduce the behavior of the function strcmp (man strcmp).
+Your function must be declared as follows:
+int    ft_strcmp(char *s1, char *s2);*/
+
+int		ft_strcmp(char *s1, char *s2)
+{
+	while (s1 && s2 && s1 == s2)
+	{
+		s1++;
+		s2++;
+	}
+	return (*s1 - *s2);
+}
+
+/****************************************************************************/
+
+is_power_of_2
+/*Write a function that determines if a given number is a power of 2.
+This function returns 1 if the given number is a power of 2, otherwise it returns 0.
+Your function must be declared as follows:
+int	    is_power_of_2(unsigned int n);*/
+
+int		is_power_of_2(unsigned int n)
+{
+	while (n > 1)
+	{
+		if (n % 2 != 0)
+			return (0);
+		n /= 2;
+	}
+	return (1);
+}
+
+/****************************************************************************/
+
+swap_bits
+/*Write a function that takes a byte, swaps its halves (like the example) and
+returns the result.
+Your function must be declared as follows:
+unsigned char	swap_bits(unsigned char octet); */
+
+unsigned char	swap_bits(unsigned char octet)
+{
+	return (octet << 4 | octet >> 4);
+}
